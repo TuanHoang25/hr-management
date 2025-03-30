@@ -16,7 +16,7 @@ const Login = () => {
     // Handle login logic here (e.g., API call)
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/login",
+        "https://hrm-backend-0s8j.onrender.com/api/auth/login",
         { name, password, location }
       );
       if (response.data.success) {
