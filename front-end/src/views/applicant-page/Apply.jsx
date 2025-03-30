@@ -17,7 +17,7 @@ import {
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ApplyPageImg from "../../assets/images/bg/LoginBackground.jpg";
 import { useNavigate } from "react-router-dom";
-import "../../assets/css/apply.css";
+import "../../assets/css/Apply.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const Apply = () => {
