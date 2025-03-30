@@ -1,0 +1,41 @@
+.attendance-history {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.attendance-bubble {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #f1f1f1;
+}
+
+.check-in {
+  background-color: #d1e7dd;
+  border-radius: 10px;
+  padding: 5px;
+  margin-right: auto;
+}
+
+.check-out {
+  background-color: #f8d7da;
+  border-radius: 10px;
+  padding: 5px;
+  margin-left: auto;
+}
+.check-out-overnight {
+  font-weight: bold;
+  color: red;
+  background-color: orange; /* Màu nền nhạt để phân biệt */
+  border: 2px solid yellow; /* Viền đỏ để làm nổi bật */
+  padding: 5px;
+}
+.date-label {
+    font-weight: bold;
+    font-size: x-small;
+    margin: 15px 10px; /* Thêm khoảng cách giữa checkIn và checkOut */
+  }

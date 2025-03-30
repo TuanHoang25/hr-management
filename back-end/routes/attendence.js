@@ -1,0 +1,11 @@
+import express from "express";
+import authMiddleware from "../middleware/authMiddleware.js";
+import { generateQRCode, scanQRCode,getAllAttendanceRecords,getAttendanceSummary, getAttendanceHistory } from "../controllers/attendencecontroller.js";
+const router = express.Router();
+router.get("/getqr", authMiddleware, generateQRCode);
+router.post("/scan", authMiddleware, scanQRCode);
+router.get("/records", authMiddleware, getAllAttendanceRecords);
+router.get("/summary", authMiddleware, getAttendanceSummary);
+router.get("/history",authMiddleware,getAttendanceHistory);
+// router.get("/records", authMiddleware, getAttendanceRecords);
+export default router;

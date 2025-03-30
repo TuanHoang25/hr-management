@@ -1,0 +1,25 @@
+/* Thẻ chứa icon chuông và số thông báo */
+.notification-bell-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  /* Style cho icon chuông */
+  .bell-icon {
+    color: #333;
+  }
+  
+  /* Style cho số thông báo (badge) */
+  .notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 8px;
+    font-weight: bold;
+  }
+  

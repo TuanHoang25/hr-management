@@ -1,0 +1,10 @@
+@import "variables" ;
+// @import "bootstrap-icons/font/bootstrap-icons.scss" ;
+@import "bootstrap/scss/bootstrap.scss";
+@import "./layout/sidebar" ;
+@import "./layout/container" ;
+// @forward './layout/sidebar';
+// @forward './layout/container';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+
