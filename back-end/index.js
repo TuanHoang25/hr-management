@@ -8,6 +8,7 @@ import applicationRouter from "./routes/application.js";
 import leaveRouter from "./routes/leave.js";
 import taskRouter from "./routes/task.js";
 import connectDB from "./db/db.js";
+import dashboardRouter from "./routes/dashboard.js";
 connectDB();
 const app = express();
 app.use(
@@ -29,6 +30,7 @@ app.use("/api/attendance", attendenceRouter);
 app.use("/api/application", applicationRouter);
 app.use("/api/leave", leaveRouter);
 app.use("/api/task", taskRouter);
+app.use("/api/dashboard", dashboardRouter);
 app.listen(process.env.PORT, () => {
     console.log(`Server dang chay tai ${process.env.PORT}`);
 });

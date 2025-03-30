@@ -1,35 +1,88 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
 import SummaryCard from "./SummaryCard";
 
 const DashboardContent = () => {
+  // State để lưu trữ dữ liệu thống kê
+  const [statistics, setStatistics] = useState({
+    employeeCount: 0,
+    departmentCount: 0,
+    applications: {
+      total: 0,
+      pending: 0,
+      approved: 0,
+      rejected: 0,
+    },
+    leaves: {
+      total: 0,
+      pending: 0,
+      approved: 0,
+      rejected: 0,
+    },
+  });
+
+  // Hàm lấy dữ liệu thống kê từ server
+  const fetchDashboardStatistics = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.get(
+        "http://localhost:3000/api/dashboard/statistics",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setStatistics(response.data);
+    } catch (error) {
+      console.error("Lỗi khi lấy dữ liệu thống kê:", error);
+    }
+  };
+
+  // Gọi API khi component được mount
+  useEffect(() => {
+    fetchDashboardStatistics();
+  }, []);
+
   const adminData = [
-    { icon: "👩‍💼", text: "Employees", number: 120, color: "#4CAF50" },
-    { icon: "📂", text: "Departments", number: 12, color: "#2196F3" },
-    { icon: "🕒", text: "Projects", number: 8, color: "#FF9800" },
+    {
+      icon: "👩‍💼",
+      text: "Employees",
+      number: statistics.employeeCount,
+      color: "#4CAF50",
+    },
+    {
+      icon: "📂",
+      text: "Departments",
+      number: statistics.departmentCount,
+      color: "#2196F3",
+    },
   ];
 
   const leaveData = [
     {
       icon: "📝",
-      text: "Đơn nghỉ phép",
-      number: 45,
+      text: "Tổng đơn",
+      number: statistics.applications.total + statistics.leaves.total,
       color: "#4CAF50",
     },
     {
       icon: "⏳",
       text: "Đơn chờ duyệt",
-      number: 8,
+      number: statistics.applications.pending + statistics.leaves.pending,
       color: "#FF9800",
     },
     {
       icon: "✅",
       text: "Đơn chấp thuận",
-      number: 32,
+      number: statistics.applications.approved + statistics.leaves.approved,
       color: "#2196F3",
     },
     {
       icon: "❌",
       text: "Đơn từ chối",
-      number: 5,
+      number: statistics.applications.rejected + statistics.leaves.rejected,
       color: "#FFB6C1",
     },
   ];
@@ -49,7 +102,7 @@ const DashboardContent = () => {
           textShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)",
         }}
       >
-        Dashboard Overview
+        NHÂN SỰ
       </h1>
       <div
         style={{
@@ -69,10 +122,8 @@ const DashboardContent = () => {
           />
         ))}
       </div>
-
       {/* Thêm khoảng cách giữa Admin Summary và Leave Manager */}
       <div style={{ margin: "40px 0" }} /> {/* Khoảng cách giữa hai phần */}
-
       {/* Tiêu đề cho Leave Manager */}
       <h1
         style={{
@@ -86,7 +137,7 @@ const DashboardContent = () => {
           textShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)",
         }}
       >
-        Leave Manager
+        ĐƠN TỪ
       </h1>
       <div
         style={{
@@ -110,4 +161,4 @@ const DashboardContent = () => {
   );
 };
 
-export default DashboardContent; 
+export default DashboardContent;
